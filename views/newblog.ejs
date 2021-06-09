@@ -1,0 +1,85 @@
+<%- include('./partials/header') %>
+<body>
+  <%- include('./partials/nav') %>
+  <h2 class="text-light text-center">Create New Blog Post</h2>
+  <div class="container mb-5">
+    <div class="form">
+      <form method="POST" action="/blogs" class="needs-validation" novalidate>
+        <div class="form-row">
+          <div class="col-md-12 mb-3 mt-3">
+            <label for="title1" class="text-light">Title</label>
+            <input
+              type="text"
+              class="form-control"
+              id="title1"
+              value=""
+              required
+              name="title"
+            />
+            <div class="valid-feedback">Looks good!</div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-md-12 mb-3">
+            <label for="desc1" class="text-light">Description</label>
+            <input
+              type="text"
+              class="form-control"
+              id="desc1"
+              value=""
+              required
+              name="description"
+            />
+            <div class="valid-feedback">Looks good!</div>
+          </div>
+        </div>
+
+        <div class="form-group pb-3">
+          <label for="snippet1" class="text-light">Snippet</label>
+          <textarea
+            class="form-control"
+            id="snippet1"
+            name="snippet"
+            rows="5"
+            style="resize: none"
+          ></textarea>
+        </div>
+
+        <div class="text-center pb-3">
+          <button class="btn btn-primary mr-3" id="addPost">Add Post</button>
+          <a href="/" class="btn btn-info" id="addPost">View Posts</a>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+      "use strict";
+      window.addEventListener(
+        "load",
+        function () {
+          // Fetch all the forms we want to apply custom Bootstrap validation styles to
+          var forms = document.getElementsByClassName("needs-validation");
+          // Loop over them and prevent submission
+          var validation = Array.prototype.filter.call(forms, function (form) {
+            form.addEventListener(
+              "submit",
+              function (event) {
+                if (form.checkValidity() === false) {
+                  event.preventDefault();
+                  event.stopPropagation();
+                }
+                form.classList.add("was-validated");
+              },
+              false
+            );
+          });
+        },
+        false
+      );
+    })();
+  </script>
+
+  <%- include('./partials/footer') %>
+</body>

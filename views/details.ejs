@@ -1,0 +1,44 @@
+<%-include('./partials/header') %>
+
+    <body>
+        <%-include('./partials/nav') %>
+            <div class="container">
+                <div class="card mt-5">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <%=blog.title%>
+                        </h5>
+                        <div class="row d-flex">
+                        <h6 class="card-subtitle mb-2 text-muted col-lg-8">
+                            <%=blog.description%>
+                        </h6><span class="">
+                            <%=blog.created.toLocaleDateString()%>
+                            <%=blog.created.toLocaleTimeString()%>
+                        </span>
+                    </div>
+                    <hr>
+                        <p class="card-text">
+                            <%=blog.snippet%>
+                        </p>
+                        <a data-doc="<%=blog._id%>" class="delete btn btn-danger"><i class="fa fa-trash mr-2"></i>Delete</a>
+                        <a href="#" class="btn btn-primary"><i class="fa fa-pen mr-2"></i>Edit</a>
+                    </div>
+                </div>
+            </div>
+            <%-include('./partials/footer')%>
+
+            <script>
+                const trashcan = document.querySelector('a.delete');
+                trashcan.addEventListener('click', (e) => {
+                  const endpoint = `/blogs/${trashcan.dataset.doc}`;
+                  fetch(endpoint, {
+                    method: 'DELETE',
+                  })
+                  .then(response => response.json())
+                  .then(data => window.location.href = data.redirect)
+                  .catch(err => console.log(err));
+                });
+                
+              </script>
+
+    </body>

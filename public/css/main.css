@@ -1,0 +1,20 @@
+body {
+    background: #2c2c2c !important;
+  }
+  
+  .card-img {
+    background: url('/images/mosque.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x: center;
+  }
+
+  @media screen and (min-width: 768px){
+    .form{
+
+      margin: auto;
+      padding: 30px;
+      width: 70% !important;
+      background: rgba(238, 231, 231, 0.4);
+    }
+  }

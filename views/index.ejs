@@ -1,0 +1,40 @@
+<%- include('./partials/header') %>
+
+    <body>
+        <%- include('./partials/nav') %>
+            <div class="container">
+                <div class="my-3">
+                    <a href="/blogs/newblog" class='btn btn-success btn-lg'><i class="fa fa-plus mr-2"></i>New Post</a>
+                </div>
+                <div class="row justify-content-center mb-5">
+                    
+                    <% if (blogs.length> 0) { %> <% blogs.forEach(blog=> { %>
+
+                            <div class="card mr-2 mb-2 rounded col-lg-3 col-md-5">
+                                <div class="card-header text-bold text-warning bg-secondary">
+                                  <%= blog.title.toUpperCase() %>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <%=blog.description%>
+                                    </h5>
+                                    <span class="text-muted">
+                                        <%=blog.created.toLocaleDateString()%>
+                                    </span>
+                                    <span class="text-muted">
+                                        <%=blog.created.toLocaleTimeString()%>
+                                    </span>
+                                    <p class="card-text">
+                                        <%=blog.snippet.slice(0,50)%>&nbsp;&nbsp;&nbsp;<a href="/blogs/<%=blog._id%>" id='<%=blog._id%>' class="ml-auto">Read More...</a>
+                                    </p>
+                                   
+                                </div>
+                            </div>
+                            <% }) %>
+                        </div>
+                <% } else { %>
+                    <p>There are no blogs to display...</p>
+                    <% } %>
+            </div>
+            <%-include('./partials/footer')%>
+    </body>
