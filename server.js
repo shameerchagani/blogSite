@@ -1,5 +1,5 @@
 const express = require('express')
-const port = process.env.port || 8080
+const PORT = process.env.port||3000
 const mongoose = require('mongoose');
 const Blog = require('./models/blog')
 const dotenv = require('dotenv').config()
@@ -11,7 +11,7 @@ const app = express()
 //connect MongoDB
 const dbURI = process.env.dbURI
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(result => app.listen(port, () => console.log(`Server is running on Port : ${port}`)))
+    .then(result => app.listen(PORT, () => console.log(`Server is running on Port : ${PORT}`)))
     .catch(err => console.log(err));
 
 //Set View Engine
